@@ -1,3 +1,8 @@
+/*
+      Author: Junyuan Zeng
+      Modified by Yufei Gu
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

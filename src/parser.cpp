@@ -1,3 +1,7 @@
+/*
+	Author: Junyuan Zeng
+*/
+
 #include "dump.h"
 #include <stack>
 #include <string>
@@ -6,8 +10,7 @@ using namespace std;
 
 extern int searchPC(unsigned int pc);
 
-//#define GTMEP
-//#define GALL
+
 #define GALL
 
 int main(int argc, char*argv[])
@@ -69,19 +72,12 @@ int main(int argc, char*argv[])
 		if(pc < 0xc1000000)
 			continue;
 
-	/*	if(strcmp(funName,oldFunName) == 0 && strcmp(fname,oldfname) == 0){
-			continue;
-		}*/
-
 		l++;
 
 		if(oldcr3 == cr3)
 			continue;
 		oldcr3 = cr3;
 		fprintf(file,"%u\t%x\t%x\t%d\t%s\t%s\n",l,cr3,pc,i,funName,fname);
-		//l++;
-		//strcpy(oldFunName,funName);
-		//strcpy(oldfname,fname);
 	}
 	fclose(file);
 #endif
@@ -99,9 +95,6 @@ int main(int argc, char*argv[])
 		return 1;
 	}
 
-//	int layer = 1;
-//	strcpy(oldFunName,"NO");
-	
 	int ifcall = 0;
 	while(fgets(temp,300000,file)){
 		sscanf(temp,"%x\t%x\t%s\t%u\t%s\t%s",&cr3,&pc,funName,&l,fname,op);
@@ -111,7 +104,6 @@ int main(int argc, char*argv[])
 
 		if(strcmp(op,"call") == 0){
 			ifcall = 1;
-			//st.push(temp);
 		}
 		else{
 			if(ifcall == 1){
@@ -150,27 +142,10 @@ int main(int argc, char*argv[])
 			fprintf(file1,"\n");
 			fprintf(file1,"\n");
 		}
-
-		/*if(strcmp(funName,oldFunName) == 0)
-			continue;
-
-		if(strcmp(op,"ret") == 0 || strcmp(op,"iret") == 0){
-			
-		}
-		
-		fprintf(file1,"%s\t%s\n",funName,fname,++i);
-		strcpy(oldFunName,funName);*/
 	}
-
-//void printFun(FILE *ifile, FILE *ofile, int tag){
-//}
 
 
 
 #endif
-
-
-
-
 	return 0;
 }
