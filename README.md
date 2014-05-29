@@ -1,3 +1,8 @@
+Introduction
+--------
+
+A tool to map binary trace to source code with help of objdump and Emacs.
+
 Compile
 --------
         cd src
