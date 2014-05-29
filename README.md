@@ -30,7 +30,7 @@ Generate tracemap
 
         ./tracemap example.sourceline example.trace > example.tracemap
 
-Generate Function index from tracemap file
+Generate Function Index From tracemap File
 --------
         ./get-fun.py example.tracemap > example.fun
 
