@@ -1,5 +1,10 @@
-;; ==================== SEARCH-BACK-CURRENT-WORD =====================
-;; functions for kernel source code review
+;; This is tool for mapping binary trace to source code
+;; Author: Yufei Gu
+
+; Put the following code in your .emacs, init.el, site-load.el, or other relevant file
+; (add-to-list 'load-path "path-to-tracemapping.el")
+; (require 'tracemapping)
+
 (defun search-back-current-word ()
   "search backward by current word"
   (interactive)
@@ -26,18 +31,27 @@
   (hl-line-highlight))
 
 
+(setq src-directory "")
+
+(defun change-src-directory(arg)
+  (interactive (list (read-directory-name "Select new source code directory:")) )
+  (setq src-directory arg) )
+
 (defun goto-src-line()
   (interactive)
   (setq my-str (buffer-substring (line-beginning-position) (line-end-position)))
   (setq my-list (delete "" (split-string my-str "\t")))
   (if (> (length my-list) 4)
-   (progn 
-     (open-file-line 
-      (concat "../linux-2.6.32-rc8" (nth 4 my-list)) 
-      ;(concat "./linux-3.2.52" (nth 4 my-list)) 
-      (string-to-number (nth 3 my-list)))
-     (other-window 1)
-     (goto-line (+ 1 (line-number-at-pos)))))
-)
+      (progn
+        (if (string= src-directory "")
+            (setq src-directory (read-directory-name "Select source code directory:")))
+        (open-file-line 
+         (concat src-directory (nth 4 my-list)) 
+         (string-to-number (nth 3 my-list)))
+        (other-window 1)
+        (goto-line (+ 1 (line-number-at-pos)))))
+  )
 
 (global-set-key (kbd "C-z") 'goto-src-line)
+
+(provide 'tracemapping)

@@ -11,9 +11,13 @@ Compile
 Emacs Configuration 
 --------
 
-Add elisp snippet in file tracemapping.el to your .emacs or
-.emacs.d/init.el, and make the directory point to your source code
-directory.
+Put 'tracemapping.el' to your Emacs plugin directory, such as ~/.emacs.d. Then put the
+following code in your .emacs, init.el, site-load.el, or other
+relevant file
+
+    (add-to-list 'load-path "path-to-tracemapping.el")
+    (require 'tracemapping)
+
 
 Source File Generation
 --------
@@ -30,6 +34,7 @@ Generate Function index from tracemap file
 
 Usage
 --------
-Open example.tracemap with Emacs, "Ctrl+z" to jump to source code.
+Open example.tracemap with Emacs, "Ctrl+z" to jump to source code, you
+may need to select your source code directory first.
 
 Open example.fun with Emacs, click to jump to source code or tracemap file.
