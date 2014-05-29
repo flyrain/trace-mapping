@@ -24,8 +24,10 @@ Source File Generation
         objdump -dl vmlinux > example.dl
         ./sourceline example.dl > example.sourceline
 
-Generate Trace Mapping File From Binary Tracing
+Generate tracemap 
 --------
+'example.trace' is a binary trace file you got from qemu or other dynamic program analysis tools.
+
         ./tracemap example.sourceline example.trace > example.tracemap
 
 Generate Function index from tracemap file
