@@ -1,8 +1,8 @@
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
+/*
+Author: Junyuan Zeng
+*/
+
 #include "dump.h"
-//#include <map>
 
 
 using namespace std;
@@ -25,37 +25,6 @@ struct Elem
 	}
 };
 
-/*typedef  map<unsigned,Elem*> Map;
-
-Map kernelMap;
-
-void read(const char* file)
-{
-	FILE * pFile;
-	unsigned int inst;
-	char funName[150];
-	int line;
-	char fname[250];
-	char oneLine[1000];
-
-	if((pFile = fopen(file,"r")) == NULL)
-	{
-		perror("error");
-		return;
-	}
-	
-	int count = 0;
-	while(fgets(oneLine,1000,pFile)){
-		count++;
-	}
-	fseek(pFile,0,SEEK_SET);	
-
-	int i = 0;
-	while(fscanf(pFile,"%x\t%s\t%d\t%s\n",&inst,funName,&line,fname) > 0){
-		kernelMap[inst] = new Elem(funName,fname,line);
-	}
-	fclose(pFile);
-}*/
 
 void read1(const char* file)
 {
